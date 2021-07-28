@@ -1,0 +1,30 @@
+
+<label for="exampleInputEmail1" class="form-label">Selección de equipo</label>
+<select class="form-control"  [(ngModel)]="Va_tar.Tarjeta" (change)="onSelect($event);"> 
+    <option *ngFor="let nom_tarjt of nom_tarj" value="{{nom_tarjt.Tarjeta}}"> 
+        {{nom_tarjt.Tarjeta}}
+    </option>
+</select>
+
+<!--a href="#" class="btn btn-primary" routerLink="{{al}}">Ingresar</a--> 
+<br>
+<label for="exampleInputEmail1" class="form-label">Datos</label>
+<div class="card" style="width: 21rem;">
+    <div class="card-header">
+<select class="form-control">
+<option *ngFor="let equipos of equipo">
+    <div class="card text-center">
+        <div class="card-header">
+            {{equipos.Temperatura}}
+            {{equipos.Fecha}}
+            
+        </div>
+    </div>
+</option>
+</select>
+
+    </div>
+</div>
+
+<br>
+<a href="#" class="btn btn-primary" routerLink="/eléctricos">Regresar</a>
