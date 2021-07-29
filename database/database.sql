@@ -2,34 +2,19 @@
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
 flush privileges;
 CREATE DATABASE kiosco_db;
-
 USE kiosco_db;
-
 DROP TABLE IF EXISTS `tarjeta1`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tarjeta1` (
   `direccIP` varchar(20) DEFAULT NULL,
   `Temperatura` varchar(20) DEFAULT NULL,
   `Fecha` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `Tarjeta` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tarjeta1`
---
-
 LOCK TABLES `tarjeta1` WRITE;
 /*!40000 ALTER TABLE `tarjeta1` DISABLE KEYS */;
 INSERT INTO `tarjeta1` VALUES ('192.168.5.104','-127.00','2021-07-22 18:55:46','1'),('192.168.5.104','-127.00','2021-07-22 18:55:56','1'),('192.168.5.104','-127.00','2021-07-22 18:56:06','1'),('192.168.5.104','-127.00','2021-07-22 18:56:16','1'),('192.168.5.104','-127.00','2021-07-22 18:56:26','1'),('192.168.5.104','-127.00','2021-07-22 18:56:36','1'),('192.168.5.104','-127.00','2021-07-22 18:56:46','1'),('192.168.5.104','-127.00','2021-07-22 18:56:56','1'),('192.168.5.104','-127.00','2021-07-22 22:45:22','1'),('192.168.5.104','-127.00','2021-07-22 22:45:32','1'),('192.168.5.104','-127.00','2021-07-22 22:45:42','1'),('192.168.5.104','-127.00','2021-07-22 22:45:52','1'),('192.168.5.104','-127.00','2021-07-22 22:46:02','1'),('192.168.5.104','-127.00','2021-07-22 22:46:13','1'),('192.168.5.104','-127.00','2021-07-22 22:46:23','1'),('192.168.5.104','-127.00','2021-07-22 22:46:33','1');
 /*!40000 ALTER TABLE `tarjeta1` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `tarjeta10`
---
-
 DROP TABLE IF EXISTS `tarjeta10`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -750,14 +735,4 @@ LOCK TABLES `tarjeta9` WRITE;
 /*!40000 ALTER TABLE `tarjeta9` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tarjeta9` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2021-07-29 16:04:19
+EXIT;
