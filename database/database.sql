@@ -1,9 +1,9 @@
 
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
 flush privileges;
-CREATE DATABASE base_esp8266;
+CREATE DATABASE kiosco_db;
 
-USE base_esp8266;
+USE kiosco_db;
 
 DROP TABLE IF EXISTS `tarjeta1`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;

@@ -9,7 +9,7 @@ services:
     networks:
         - mysql_db
     environment:
-        DB_NAME: base_esp8266
+        DB_NAME: kiosco_db
         DB_HOST: db
         DB_USER: root
         DB_PASS: pass1234
