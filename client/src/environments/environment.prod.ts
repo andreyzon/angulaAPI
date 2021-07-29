@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  url: 'http://kiosco.com.co/API/KIOSCO'
+  url: 'http://localhos:3000/API/KIOSCO'
 };
