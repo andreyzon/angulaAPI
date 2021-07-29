@@ -1,9 +1,9 @@
 export default {
-
-    database: {
-        host: 'localhost',
-        user: 'root',
-        password: 'mysql098765',
-        database: 'base_esp8266'
-    }
-}
+  database: {
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+    port: 3306,
+  },
+};

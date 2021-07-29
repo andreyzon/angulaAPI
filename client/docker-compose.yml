@@ -1,0 +1,8 @@
+version: '3'
+services:
+  kiosco-frontend:
+    image: kiosco-frontend
+    container_name: kiosco-frontend-container
+    restart: on-failure
+    ports:
+      - "8000:80"

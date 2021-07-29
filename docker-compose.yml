@@ -1,0 +1,47 @@
+version: '3'
+services:
+  backend:
+    image: kiosco-backend
+    depends_on:
+        - db
+    restart: on-failure
+    container_name: kiosco-backend-container
+    networks:
+        - mysql_db
+    environment:
+        DB_NAME: kiosco_db
+        DB_HOST: db
+        DB_USER: root
+        DB_PASS: pass1234
+    ports:
+      - "3000:3000"
+  db:
+    image: kiosco-db
+    restart: always
+    container_name: kiosco-db-container
+    networks:
+        - mysql_db
+    environment:        
+        MYSQL_ROOT_PASSWORD: pass1234   
+        MYSQL_DATABASE: db_kiosco
+        MYSQL_USER: kiosco
+        MYSQL_PASSWORD: pass1234   
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+        - db_data:/var/lib/mysql
+  frontend:
+    image: kiosco-frontend
+    container_name: kiosco-frontend-container
+    restart: on-failure
+    ports:
+      - "4000:80"
+
+networks:
+    mysql_db:
+        driver: bridge
+
+volumes:
+    db_data:
+
+
+
