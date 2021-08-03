@@ -1,6 +1,7 @@
 
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
 flush privileges;
+SET GLOBAL time_zone = 'America/Bogota';
 CREATE DATABASE kiosco_db;
 USE kiosco_db;
 DROP TABLE IF EXISTS `tarjeta1`;

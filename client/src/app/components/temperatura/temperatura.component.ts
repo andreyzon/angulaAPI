@@ -30,8 +30,10 @@ export class TemperaturaComponent implements OnInit {
     
     if (this.valortarjeta==='Cuarto frío fruver'){
     this.gamesService.getdispositivo(1).subscribe(
-      res => {
-        this.cuarto = res;
+      (res:any) => {
+        console.log(new Date(res[0].Fecha).toLocaleString("es-CO", { timeZone: "America/Bogota" }))
+        console.log(res)
+        this.cuarto = res.map((item:any)=>({...item, Fecha:new Date(item.Fecha).toLocaleString("es-CO", { timeZone: "America/Bogota" })}));
         
       },
       err => console.log(err)
