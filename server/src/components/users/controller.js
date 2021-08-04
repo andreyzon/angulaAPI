@@ -1,6 +1,6 @@
 const { Users, Roles, UsersRoles, sequelize } = require('../../database/models');
 
-const createUser = async (username, firstName, lastName, email,  password, role = 'customer') => {
+const createUser = async (username, firstName, lastName, email, password, role = 'customer') => {
     let roleId;
     try {
         roleId = await Roles.findOne({
@@ -15,8 +15,8 @@ const createUser = async (username, firstName, lastName, email,  password, role 
         throw (error);
     }
     try {
-        let newUser = await Users.create({ username, firstName, lastName, email,  password });
-        newUser = JSON.parse(JSON.stringify(newUser)); 
+        let newUser = await Users.create({ username, firstName, lastName, email, password });
+        newUser = JSON.parse(JSON.stringify(newUser));
         await UsersRoles.create({ userId: newUser.id, roleId });
         delete newUser['password'];
         return newUser;
@@ -32,6 +32,9 @@ const getUser = async (id = Number) => {
             attributes: { exclude: ['password'] }
         });
         user = JSON.parse(JSON.stringify(user));
+        if (!user) {
+            throw ({ internalMessage: { detail: `${user} not exist`, internalCode: 400 } });
+        }
         const scopes = await sequelize.query(`SELECT r.name as "role", p.name, p.slug  
         FROM UsersRoles as ur
         JOIN Roles as r

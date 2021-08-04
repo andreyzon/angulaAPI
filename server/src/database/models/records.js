@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Records.init({
+    nodeId: DataTypes.INTEGER,
     temperature: DataTypes.STRING,
     ip: DataTypes.STRING
   }, {
