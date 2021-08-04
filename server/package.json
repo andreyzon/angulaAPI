@@ -1,5 +1,5 @@
 {
-    "name": "titin-shop-server",
+    "name": "kiosco-backend",
     "version": "1.0.0",
     "description": "Shop by products for babies",
     "main": "index.js",
