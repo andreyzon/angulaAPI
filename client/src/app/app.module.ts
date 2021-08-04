@@ -11,8 +11,7 @@ import { FormsModule } from '@angular/forms';
 
 //Conexión con la REST API
 
-import { GamesService } from './services/games.service';
-import { from } from 'rxjs';
+import { GamesService } from './services/games/games.service';
 import { GameEquipComponent } from './components/game-equip/game-equip.component';
 import { Piso2Component } from './components/piso2/piso2.component';
 import { TemperaturaComponent } from './components/temperatura/temperatura.component';

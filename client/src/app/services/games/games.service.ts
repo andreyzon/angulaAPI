@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Tar } from '../models/Game';
+import { Tar } from '../../models/Game';
 import { Observable } from 'rxjs';
 import { stripSummaryForJitNameSuffix } from '@angular/compiler/src/aot/util';
 
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
