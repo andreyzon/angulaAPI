@@ -41,16 +41,16 @@ docker run --name kiosco-backend-container -e NODE_ENV=production --net mysql_db
 
 - Create database
 ```
-docker run --name kiosco-backend-container -e NODE_ENV=production --net mysql_db kiosco-backend npx sequelize-cli db:create
+docker run --rm --name kiosco-backend-container -e NODE_ENV=production --net mysql_db kiosco-backend npx sequelize-cli db:create
 ```
 
 - Migrate database
 ```
-docker run --name kiosco-backend-container -e NODE_ENV=production --net mysql_db kiosco-backend npx sequelize-cli db:migrate
+docker run --rm --name kiosco-backend-container -e NODE_ENV=production --net mysql_db kiosco-backend npx sequelize-cli db:migrate
 ```
 - Seed database
 ```
-docker run --name kiosco-backend-container -e NODE_ENV=production --net mysql_db kiosco-backend npx sequelize-cli db:seed:all
+docker run --rm --name kiosco-backend-container -e NODE_ENV=production --net mysql_db kiosco-backend npx sequelize-cli db:seed:all
 ```
 
 ## Run Frontend docker
