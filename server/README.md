@@ -44,12 +44,12 @@ ARTIFACT_ID=1.0
 ```
 - Update Migrate database
 ```
-docker run --rm --name titin-shop-server-container -v $(pwd):/usr/src/app titin-shop-server:$ARTIFACT_ID npx sequelize-cli db:migrate
+docker run --rm --name kiosco-backend-container -v $(pwd):/usr/src/app kiosco-backend:$ARTIFACT_ID npx sequelize-cli db:migrate
 ```
 
 - Rollback migrations.
 ```
-docker run --rm --name titin-shop-server-container -v $(pwd):/usr/src/app titin-shop-server:$ARTIFACT_ID npx sequelize-cli db:migrate:undo:all
+docker run --rm --name kiosco-backend-container -v $(pwd):/usr/src/app kiosco-backend:$ARTIFACT_ID npx sequelize-cli db:migrate:undo:all
 ```
 
 ## Deploy manual
@@ -59,11 +59,11 @@ ARTIFACT_ID=1.0
 ```
 - Debugging project
 ```
-docker run --rm -p 3333:3000 --name titin-shop-server-container -v $(pwd):/usr/src/app titin-shop-server:$ARTIFACT_ID
+docker run --rm -p 3333:3000 --name kiosco-backend-container -v $(pwd):/usr/src/app kiosco-backend:$ARTIFACT_ID
 ```
 - Deploy docker simple
 ```
-docker run --rm -d -p 3333:3000 --name titin-shop-server-container -v $(pwd):/usr/src/app titin-shop-server:$ARTIFACT_ID
+docker run --rm -d -p 3333:3000 --name kiosco-backend-container -v $(pwd):/usr/src/app kiosco-backend:$ARTIFACT_ID
 ```
 - Deploy docker compose
 ```
@@ -71,7 +71,7 @@ env TAG=$ARTIFACT_ID docker-compose -f ./server/docker-compose.yml up -d
 ```
 - Deploy with docker swarm
 ```
-env TAG=$ARTIFACT_ID docker stack deploy -c ./server/stack.yml titin-shop-server
+env TAG=$ARTIFACT_ID docker stack deploy -c ./server/stack.yml kiosco-backend
 ```
 
 
