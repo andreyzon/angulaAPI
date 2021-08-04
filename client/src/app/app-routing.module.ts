@@ -8,16 +8,19 @@ import { Piso2Component } from './components/piso2/piso2.component';
 import { Piso3Component } from './components/piso3/piso3.component';
 import { TemperaturaComponent } from './components/temperatura/temperatura.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { LoginComponent } from './components/login/login.component';
 
 import { AdminGuard } from './guards/admin/admin.guard';
 
 const routes: Routes = [
-  //{
-  //path: '',
-  //redirectTo: 'games',
-  //pathMatch: 'full'
-  //},
-  //{
+  {
+    path: '',
+    redirectTo: 'login',
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
   {
     canActivate: [AdminGuard],
     path: 'equipos',
