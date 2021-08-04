@@ -30,7 +30,7 @@ router.post('/sign-in', async (req, res, next) => {
                         });
                         return response.success(req, res, {
                             token,
-                            user: { ...payload, email, avatar },
+                            user: { ...payload, email },
                             permission,
                             role: user.permissions[0].role
                         });
