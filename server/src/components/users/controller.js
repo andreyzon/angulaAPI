@@ -1,6 +1,6 @@
 const { Users, Roles, UsersRoles, sequelize } = require('../../database/models');
 
-const createUser = async (username, firstName, lastName, email, password, role = 'customer') => {
+const createUser = async (username, firstName, lastName, email, password, role = 'support') => {
     let roleId;
     try {
         roleId = await Roles.findOne({
@@ -8,7 +8,7 @@ const createUser = async (username, firstName, lastName, email, password, role =
             where: { name: role }
         });
         if (!roleId) {
-            throw ({ internalMessage: { detail: `${role} not exist`, internalCode: 400 } });
+            throw ({ internalMessage: { detail: `Role ${role} not exist`, internalCode: 400 } });
         }
         roleId = roleId.toJSON().id;
     } catch (error) {

@@ -16,11 +16,13 @@ const validationHandler = require('../../utils/middleware/validationHandler');
 const scopesValidationHandler = require('../../utils/middleware/scopesValidationHandler');
 
 router.post('/',
+    passport.authenticate('jwt', { session: false }),
+    scopesValidationHandler('create_user'),
     validationHandler(createUserSchema),
     async (req, res) => {
         try {
-            const { username, firstName, lastName, email, password } = req.body;
-            const info = await controller.createUser(username, firstName, lastName, email,  password);
+            const { username, firstName, lastName, email, password, role } = req.body;
+            const info = await controller.createUser(username, firstName, lastName, email, password, role);
             response.success(req, res, info);
         } catch (error) {
             response.error(req, res, error);
