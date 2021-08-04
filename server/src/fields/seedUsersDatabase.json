@@ -1,0 +1,167 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "password": "admin",
+      "email": "admin@test.com",
+      "role": "administrator",
+      "firstName":"Admin",
+      "lastName":"Trator"
+    },
+    {
+      "username": "support",
+      "password": "support",
+      "email": "support@test.com",
+      "role": "support",
+      "firstName":"Sup",
+      "lastName":"Port"
+    }
+  ],
+  "roles": [
+    {
+      "name": "administrator",
+      "slug": "administrator",
+      "description": "Control Total",
+      "permissions": [
+        "update_user",
+        "update_users",
+        "delete_user",
+        "delete_users",
+        "create_user",
+        "create_users",
+        "read_user",
+        "read_users",
+        "read_profile",
+        "create_node",
+        "create_nodes",
+        "read_node",
+        "update_node",
+        "delete_node",
+        "create_record",
+        "create_records",
+        "read_record",
+        "read_records",
+        "update_record",
+        "update_records",
+        "delete_record",
+        "delete_records"
+      ]
+    },
+    {
+      "name": "support",
+      "slug": "support",
+      "description": "Create Products and control orders",
+      "permissions": [
+        "read_profile",
+        "create_node",
+        "create_node",
+        "create_nodes",
+        "read_node",
+        "update_node",
+        "delete_node",
+        "create_record",
+        "create_records",
+        "read_record",
+        "read_records",
+        "update_record",
+        "update_records",
+        "delete_record",
+        "delete_records"
+      ]
+    }
+  ],
+  "permissions": [
+    {
+      "name": "Create User",
+      "slug": "create_user"
+    },
+    {
+      "name": "Create Many Users",
+      "slug": "create_users"
+    },
+    {
+      "name": "Read User",
+      "slug": "read_user"
+    },
+    {
+      "name": "Read Many Users",
+      "slug": "read_users"
+    },
+    {
+      "name": "Delete User",
+      "slug": "delete_user"
+    },
+    {
+      "name": "Delete Many User",
+      "slug": "delete_users"
+    },
+    {
+      "name": "Update User",
+      "slug": "update_user"
+    },
+    {
+      "name": "Update Many Users",
+      "slug": "update_users"
+    },
+    {
+      "name": "Read Profile",
+      "slug": "read_profile"
+    },
+    {
+      "name": "Create Product",
+      "slug": "create_node"
+    },
+    {
+      "name": "Create Products",
+      "slug": "create_nodes"
+    },
+    {
+      "name": "Read Product",
+      "slug": "read_node"
+    },
+    {
+      "name": "Read Products",
+      "slug": "read_nodes"
+    },
+    {
+      "name": "Update Product",
+      "slug": "update_node"
+    },
+    {
+      "name": "Delete Product",
+      "slug": "delete_node"
+    },
+    {
+      "name": "Create Category",
+      "slug": "create_record"
+    },
+    {
+      "name": "Create Categories",
+      "slug": "create_records"
+    },
+    {
+      "name": "Read Category",
+      "slug": "read_record"
+    },
+    {
+      "name": "Read Categories",
+      "slug": "read_records"
+    },
+    {
+      "name": "Update Category",
+      "slug": "update_record"
+    },
+    {
+      "name": "Update Categories",
+      "slug": "update_records"
+    },
+    {
+      "name": "Delete Category",
+      "slug": "delete_record"
+    },
+    {
+      "name": "Delete Categories",
+      "slug": "delete_records"
+    }
+  ]
+}

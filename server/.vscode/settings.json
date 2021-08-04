@@ -1,0 +1,21 @@
+{
+    "compile-hero.disable-compile-files-on-did-save-code": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "eslint.validate": [
+        "javascript"
+    ],
+    "cSpell.words": [
+        "FULLTEXT",
+        "awscli",
+        "datetime",
+        "mysql",
+        "quickmall",
+        "sequelizerc",
+        "smartquick",
+        "talla",
+        "traefik",
+        "upselling"
+    ]
+}
