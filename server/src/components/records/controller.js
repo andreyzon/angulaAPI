@@ -4,7 +4,7 @@ const createRecords = async (nodeId, ip, temperature) =>
     Records.create({ nodeId: Number(nodeId), ip, temperature });
 
 const getRecord = (nodeId) =>
-    Records.findOne({
+    Records.findAll({
         where: { nodeId }
     });
 

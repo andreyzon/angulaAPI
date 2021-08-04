@@ -12,7 +12,7 @@ app.use('/*', notFound);
 app.use(errorHandler);
 
 app.listen(process.env.PORT || '3000', () => {
-    console.log(`Server of ${process.env.NODE_ENV} online in ${process.env.APP_URL}`);
+    console.log(`Server of ${process.env.NODE_ENV} online in ${process.env.PORT}`);
 });
 
 process.on('unhandledRejection', error => {
