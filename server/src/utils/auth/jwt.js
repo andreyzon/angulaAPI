@@ -23,16 +23,16 @@ passport.use(
                     return cb({ message: 'unauthorized' }, false);
                 }
                 user = user.toJSON();
-                const scopes = await sequelize.query(`SELECT r.name as "role", p.name, p.slug  
-                FROM public."UsersRoles" as ur
-                JOIN public."Roles" as r
-                ON ur."roleId" = r.id
-                JOIN public."Users" as u
-                ON ur."userId" = u.id
-                JOIN public."PermissionsRoles" as pr
-                ON r.id=pr."roleId"
-                JOIN public."Permissions" as p
-                ON pr."permissionId" = p.id
+                const scopes = await sequelize.query(`SELECT r.name as role, p.name, p.slug  
+                FROM UsersRoles as ur
+                JOIN Roles as r
+                ON ur.roleId = r.id
+                JOIN Users as u
+                ON ur.userId = u.id
+                JOIN PermissionsRoles as pr
+                ON r.id=pr.roleId
+                JOIN Permissions as p
+                ON pr.permissionId = p.id
                 WHERE u.id = :userId`, { replacements: { userId: user.id }, type: sequelize.QueryTypes.SELECT });
                 cb(null, { ...user, role: scopes[0].role, scopes });
             } catch (error) {

@@ -54,7 +54,6 @@
       "permissions": [
         "read_profile",
         "create_node",
-        "create_node",
         "create_nodes",
         "read_node",
         "update_node",

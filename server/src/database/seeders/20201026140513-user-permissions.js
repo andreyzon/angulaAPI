@@ -7,7 +7,7 @@ const initialState = require('../../fields/seedUsersDatabase.json');
 module.exports = {
     up: async (queryInterface, Sequelize) => { //eslint-disable-line
         let aux, auxRole, auxPermission;
-        let users_create = [];
+        //let users_create = [];
         let permissions_create = [];
         let roles_create = [];
         console.log('Clear users');
@@ -30,10 +30,14 @@ module.exports = {
                     { returning: ['id', 'slug'] }, {});
                 permissions_create.push(aux[0]);
             }
+            permissions_create = await queryInterface.sequelize.query('SELECT * FROM Permissions', { type: queryInterface.sequelize.QueryTypes.SELECT });
+            permissions_create = JSON.parse(JSON.stringify(permissions_create));
+            console.log(permissions_create);
         } catch (error) {
             console.error('Error', error.message);
             throw (error);
         }
+
         console.log('Create Roles');
         try {
             for (const index of initialState.roles) {
@@ -42,11 +46,13 @@ module.exports = {
                     slug: index.slug,
                     description: index.description
                 }], { returning: ['id', 'slug', 'name'] }, {});
-
-                roles_create.push(aux[0]);
+                let temp = await queryInterface.sequelize.query('SELECT * FROM Roles', { type: queryInterface.sequelize.QueryTypes.SELECT });
+                roles_create = JSON.parse(JSON.stringify(temp));
+                temp = temp.find(field => (field.slug === index.slug));
                 for (const item of index.permissions) {
                     auxPermission = permissions_create.find(permission => (permission.slug === item));
-                    await queryInterface.bulkInsert('PermissionsRoles', [{ permissionId: auxPermission.id, roleId: aux[0].id }], {}, {});
+                    console.log(auxPermission);
+                    await queryInterface.bulkInsert('PermissionsRoles', [{ permissionId: auxPermission.id, roleId: temp.id }], {}, {});
                 }
             }
         } catch (error) {
@@ -67,9 +73,12 @@ module.exports = {
                     createdAt: moment().format(),
                     updatedAt: moment().format()
                 }], { returning: ['id'] }, {});
-                users_create.push(aux[0]);
+                let temp2 = await queryInterface.sequelize.query('SELECT * FROM Users', { type: queryInterface.sequelize.QueryTypes.SELECT });
+                //users_create = JSON.parse(JSON.stringify(temp2));
+                temp2 = temp2.find(field => (field.username === index.username));
+                console;
                 auxRole = roles_create.find(role => (role.name === index.role));
-                await queryInterface.bulkInsert('UsersRoles', [{ userId: aux[0].id, roleId: auxRole.id }], {}, {});
+                await queryInterface.bulkInsert('UsersRoles', [{ userId: temp2.id, roleId: auxRole.id }], {}, {});
             }
         } catch (error) {
             console.error('Error', error.message);
