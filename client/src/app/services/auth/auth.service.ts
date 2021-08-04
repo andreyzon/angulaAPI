@@ -1,26 +1,25 @@
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
-  constructor(
-  ) { }
+  constructor() {}
 
   createUser(email: string, password: string) {
-    return 
+    return of({});
   }
 
   login(email: string, password: string) {
-    return 
+    return of({});
   }
 
   logout() {
-    return 
+    return of({});
   }
 
   hasUser() {
-    return 
+    return of({});
   }
 }

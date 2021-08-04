@@ -17,7 +17,10 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authService: AuthService
   ) {
-    this.buildForm();
+    this.form = this.formBuilder.group({
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+    });
   }
 
   ngOnInit() {}
@@ -26,21 +29,14 @@ export class LoginComponent implements OnInit {
     event.preventDefault();
     if (this.form.valid) {
       const value = this.form.value;
-      this.authService
-        .login(value.email, value.password)
-        .then(() => {
-          this.router.navigate(['/admin']);
-        })
-        .catch(() => {
-          alert('no es valido');
-        });
+      this.authService.login(value.email, value.password).subscribe({
+        next: () => {
+          this.router.navigate(['/login']);
+        },
+        error: () => {
+          alert('Error');
+        },
+      });
     }
-  }
-
-  private buildForm() {
-    this.form = this.formBuilder.group({
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-    });
   }
 }
