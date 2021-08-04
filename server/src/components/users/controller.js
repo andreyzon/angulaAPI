@@ -33,7 +33,7 @@ const getUser = async (id = Number) => {
         });
         user = JSON.parse(JSON.stringify(user));
         if (!user) {
-            throw ({ internalMessage: { detail: `${user} not exist`, internalCode: 400 } });
+            throw ({ internalMessage: { detail: `${id} not exist`, internalCode: 400 } });
         }
         const scopes = await sequelize.query(`SELECT r.name as "role", p.name, p.slug  
         FROM UsersRoles as ur

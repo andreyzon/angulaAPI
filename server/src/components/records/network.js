@@ -30,7 +30,7 @@ router.post('/',
 
 router.get('/',
     passport.authenticate('jwt', { session: false }),
-    scopesValidationHandler('list_records'),
+    scopesValidationHandler('read_records'),
     validationHandler(listRecordsSchema, 'query'),
     async (req, res) => {
         try {
@@ -44,7 +44,7 @@ router.get('/',
 
 router.get('/:id',
     passport.authenticate('jwt', { session: false }),
-    scopesValidationHandler('get_record'),
+    scopesValidationHandler('read_record'),
     validationHandler(getRecordSchema, 'query'),
     async (req, res) => {
         const { id } = req.params;
