@@ -63,7 +63,7 @@ const listUsers = async (username = undefined, email = undefined) => {
     return JSON.parse(JSON.stringify(users));
 };
 
-const deleteUser = async (id) => Users.destroy({ id });
+const deleteUser = async (id) => Users.destroy({ where: { id } });
 
 module.exports = {
     createUser,
