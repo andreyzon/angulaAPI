@@ -35,16 +35,16 @@ const getUser = async (id = Number) => {
         if (!user) {
             throw ({ internalMessage: { detail: `${id} not exist`, internalCode: 400 } });
         }
-        const scopes = await sequelize.query(`SELECT r.name as "role", p.name, p.slug  
+        const scopes = await sequelize.query(`SELECT r.name as role, p.name, p.slug  
         FROM UsersRoles as ur
         JOIN Roles as r
-        ON ur."roleId" = r.id
+        ON ur.roleId = r.id
         JOIN Users as u
-        ON ur."userId" = u.id
+        ON ur.userId = u.id
         JOIN PermissionsRoles as pr
-        ON r.id=pr."roleId"
+        ON r.id=pr.roleId
         JOIN Permissions as p
-        ON pr."permissionId" = p.id
+        ON pr.permissionId = p.id
         WHERE u.id = :userId`, { replacements: { userId: user.id }, type: sequelize.QueryTypes.SELECT });
         return { ...user, role: scopes[0].role, scopes };
     } catch (error) {
@@ -63,8 +63,11 @@ const listUsers = async (username = undefined, email = undefined) => {
     return JSON.parse(JSON.stringify(users));
 };
 
+const deleteUser = async (id) => Users.destroy({ id });
+
 module.exports = {
     createUser,
     getUser,
-    listUsers
+    listUsers,
+    deleteUser
 };
