@@ -3,7 +3,7 @@ const { Records } = require('../../database/models');
 const createRecords = async (nodeId, ip, temperature) =>
     Records.create({ nodeId: Number(nodeId), ip, temperature });
 
-const getNode = (nodeId) =>
+const getRecord = (nodeId) =>
     Records.findOne({
         where: { nodeId }
     });
@@ -13,12 +13,12 @@ const listRecords = () =>
         where: {},
     });
 
-const updateNode = (id, temperature, ip) =>
+const updateRecord = (id, temperature, ip) =>
     Records.update({ temperature, ip }, { where: { id } });
 
 module.exports = {
     createRecords,
     listRecords,
-    getNode,
-    updateNode
+    getRecord,
+    updateRecord
 };
