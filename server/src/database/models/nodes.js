@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   };
   Nodes.init({
     name: DataTypes.STRING,
-    description: DataTypes.STRING
+    description: DataTypes.STRING,
+    type: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Nodes',

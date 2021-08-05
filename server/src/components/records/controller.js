@@ -5,7 +5,9 @@ const createRecords = async (nodeId, ip, temperature) =>
 
 const getRecord = (nodeId) =>
     Records.findAll({
-        where: { nodeId }
+        where: { nodeId },
+        order: ['createAt','DESC'],
+        limit: 20
     });
 
 const listRecords = () =>

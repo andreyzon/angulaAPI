@@ -20,9 +20,9 @@ router.post('/',
     scopesValidationHandler('create_node'),
     validationHandler(createNodeSchema, 'body'),
     async (req, res) => {
-        const { name, description } = req.body;
+        const { name, description, type } = req.body;
         try {
-            const nodes = await controller.createNodes(name, description);
+            const nodes = await controller.createNodes(name, description, type);
             response.success(req, res, nodes);
         } catch (error) {
             response.error(req, res, { ...error, internalMessage: { message: 'Error create category', detail: error.parent.detail }, internalCode: 400 });
@@ -33,8 +33,9 @@ router.post('/',
 router.get('/',
     validationHandler(listNodesSchema, 'query'),
     async (req, res) => {
+        const { type } = req.query;
         try {
-            const nodes = await controller.listNodes();
+            const nodes = await controller.listNodes(type);
             response.success(req, res, nodes);
         } catch (error) {
             response.error(req, res, error);
