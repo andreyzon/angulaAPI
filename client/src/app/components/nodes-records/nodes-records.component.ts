@@ -29,7 +29,7 @@ export class NodesRecordsComponent implements OnInit {
   public lineChartData: ChartDataSets[] = [
     {
       data: [],
-      label: 'Temperatura',
+      label: 'Medida',
       yAxisID: 'y-axis-1',
     },
   ];
@@ -97,6 +97,8 @@ export class NodesRecordsComponent implements OnInit {
       this.node = records.result;
       console.log(this.node);
     });
+    this.lineChartData[0].label =
+      this.node.type === 'electric' ? 'Consumo en W' : 'Temperatura en C';
     let temperatures: number[] = [];
     let dates: string[] = [];
     this.nodesService
