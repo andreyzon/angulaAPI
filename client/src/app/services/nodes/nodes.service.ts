@@ -19,7 +19,7 @@ export class NodesService {
     }
     const token = sessionStorage.getItem('token');
     return this.http
-      .get(`${environment.url}/nodes`, {
+      .get(`${environment.url}/nodes?type=${type}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .pipe(
