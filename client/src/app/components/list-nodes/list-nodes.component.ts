@@ -9,15 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ListNodesComponent implements OnInit {
   constructor(private router: Router, private nodesService: NodesService) {}
-  nodes: NodeModel[] = [
-    {
-      id: 1,
-      name: 'temp',
-      description: 'Firts node',
-      createdAt: '2021-08-04T04:03:51.000Z',
-      updatedAt: '2021-08-04T04:03:51.000Z',
-    },
-  ];
+  nodes: NodeModel[] = [];
   displayedColumns: string[] = [
     'id',
     'name',
@@ -28,7 +20,7 @@ export class ListNodesComponent implements OnInit {
   title: string = 'Titulo';
   ngOnInit(): void {
     console.log(this.router.url);
-    const type = this.router.url.split('/')[0];
+    const type = this.router.url.split('/')[1];
     this.title =
       type === 'electric' ? 'Equipos eléctricos' : 'Medición de temperatura';
     this.nodesService.listNodes(type).subscribe({
