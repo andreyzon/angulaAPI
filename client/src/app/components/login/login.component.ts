@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import swal from 'sweetalert2';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService, 
+    public dialog: MatDialog
   ) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required]],
@@ -31,12 +33,42 @@ export class LoginComponent implements OnInit {
       const value = this.form.value;
       this.authService.login(value.email, value.password).subscribe({
         next: () => {
-          this.router.navigate(['/login']);
+          this.router.navigate(['/main']);
         },
-        error: () => {
-          alert('Error');
+        error: (error) => {
+          console.log(error)
+          swal.fire(
+            `Inicio fallido ${error.status}`,
+            'Verifica la información e intentalo de nuevo',
+            'error'
+          );
         },
       });
     }
   }
+ 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+}
+
+@Component({
+  selector: 'login-dialog',
+  templateUrl: 'login-dialog.html',
+})
+export class DialogOverviewExampleDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
 }

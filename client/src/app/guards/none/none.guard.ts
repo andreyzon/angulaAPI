@@ -14,7 +14,7 @@ import { AuthService } from '../../services/auth/auth.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AdminGuard implements CanActivate {
+export class NoneGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(
@@ -25,13 +25,8 @@ export class AdminGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.authService.hasUser().pipe(
-      map((user) => (!!user)),
-      tap((hasUser) => {
-        if (!hasUser) {
-          this.router.navigate(['/']);
-        }
-      })
-    );
+    const user = this.authService.getAuth();
+    if (user) this.router.navigate(['/main']);
+    return !user;
   }
 }

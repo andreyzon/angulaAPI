@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: 'http://localhost:3000/API/KIOSCO'
+  url: 'http://localhost:3000'
 };
 
 /*
