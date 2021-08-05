@@ -102,7 +102,7 @@ export class NodesRecordsComponent implements OnInit {
     this.nodesService
       .listRecordsByNode(this.node.id)
       .subscribe((records: any) => {
-        this.records = records.result.map((item: RecordModel) => {
+        this.records = records.result.reverse().map((item: RecordModel) => {
           let temperature = Number(item.temperature);
           temperatures.push(temperature);
           dates.push(
