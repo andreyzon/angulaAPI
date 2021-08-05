@@ -25,7 +25,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"cuarto frio\",\r\n    \"description\": \"Second node\"\r\n}",
+							"raw": "{\r\n    \"name\": \"cuarto frio\",\r\n    \"description\": \"Second node\",\r\n    \"type\": \"electric\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -60,12 +60,19 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/nodes",
+							"raw": "{{url}}/nodes/?type=electric",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"nodes"
+								"nodes",
+								""
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "electric"
+								}
 							]
 						}
 					},
@@ -98,7 +105,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": ""
+									"value": "1"
 								}
 							]
 						}
@@ -161,23 +168,6 @@
 							"path": [
 								"users",
 								"profile"
-							],
-							"query": [
-								{
-									"key": "email",
-									"value": "admin@test.com",
-									"disabled": true
-								},
-								{
-									"key": "businessId",
-									"value": "68",
-									"disabled": true
-								},
-								{
-									"key": "username",
-									"value": "alpina",
-									"disabled": true
-								}
 							]
 						}
 					},
@@ -349,7 +339,7 @@
 							"variable": [
 								{
 									"key": "business_id",
-									"value": "324"
+									"value": "4"
 								}
 							]
 						}
@@ -432,7 +422,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"ip\": \"10.0.0.1\",\r\n    \"temperatura\": \"-2.4\",\r\n    \"Tarjeta\": \"2\"\r\n}",
+							"raw": "{\r\n    \"ip\": \"10.0.0.1\",\r\n    \"temperatura\": \"-2.6\",\r\n    \"Tarjeta\": \"2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
