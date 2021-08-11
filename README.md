@@ -29,3 +29,12 @@ docker-compose up -d
 ```shell
 docker-compose down
 ```
+
+## Run SQL interface
+```shell
+docker run --net mysql_db  -p 8080:8080 adminer
+```
+ - Server: kiosco-db-container
+ - User: root
+ - Password: pass1234
+ - Database: data_base_kiosco
