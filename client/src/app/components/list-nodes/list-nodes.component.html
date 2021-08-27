@@ -4,7 +4,7 @@
         <div class="d-flex justify-content-around">
             <h2>Dispositivos 🔋</h2>
             <div>
-                <a [routerLink]="['/nodes/new']">
+                <a [routerLink]="['/nodes/new']" *ngIf="role==='administrator'">
                     <mat-icon class="text-secondary" aria-hidden="false" aria-label="Example home icon">
                         add_circle
                     </mat-icon>
