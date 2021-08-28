@@ -70,7 +70,6 @@ docker-compose up -d
 docker-compose down
 ```
 
-
 ## Run SQL interface
 ```shell
 docker run --net mysql_db  -p 8080:8080 adminer
