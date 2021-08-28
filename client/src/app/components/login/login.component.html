@@ -1,0 +1,25 @@
+<div class="container d-flex h-100 align-items-center">
+  <form class="col-lg-6 col-xl-6 col-8 mx-auto" [formGroup]="form" (ngSubmit)="login($event)">
+    <mat-card class="border border-primary">
+      <mat-card-header class="d-flex justify-content-center">
+        <mat-card-title>Inicia Sesión 😄</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <mat-form-field>
+            <input placeholder="Correo o Usuario" formControlName="email" matInput type="email">
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field>
+            <input placeholder="Contraseña" formControlName="password" matInput type="password">
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-actions class="d-flex justify-content-center">
+        <button mat-button color="primary" [disabled]="form.invalid" mat-raised-button type="submit">Ingresar</button>
+      </mat-card-actions>
+    </mat-card>
+
+  </form>
+</div>

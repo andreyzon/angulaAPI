@@ -1,0 +1,12 @@
+// .sequelizerc
+const path = require('path');
+require('dotenv').config();
+const config = {
+    'config': path.resolve('src/config', 'database.js'),
+    'models-path': path.resolve('src/database', 'models'),
+    'seeders-path': path.resolve('src/database', 'seeders'),
+    'migrations-path': path.resolve('src/database', 'migrations'),
+    'debug': (process.env.NODE_ENV === 'development')
+};
+
+module.exports = config;

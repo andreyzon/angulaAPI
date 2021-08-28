@@ -1,0 +1,21 @@
+<div>
+    <navigation [back]="'/'+node.type"></navigation>
+    <div class="container pb-4">
+        <div class="row">
+
+            <h1>{{node.name}}</h1>
+        </div>
+        <div class="row">
+            <p>{{node.description}}</p>
+        </div>
+        <div class="row">
+            <div class="col-8 mx-auto">
+                <canvas class="w-100 h-100" baseChart width="300" height="200" [datasets]="lineChartData"
+                    [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors"
+                    [legend]="lineChartLegend" [chartType]="lineChartType">
+                </canvas>
+            </div>
+        </div>
+        <div class="mb-4"></div>
+    </div>
+</div>

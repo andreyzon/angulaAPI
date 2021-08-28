@@ -11,14 +11,20 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~12.0.2",
+    "@angular/cdk": "^12.1.4",
     "@angular/common": "~12.0.2",
     "@angular/compiler": "~12.0.2",
     "@angular/core": "~12.0.2",
     "@angular/forms": "~12.0.2",
+    "@angular/material": "^12.1.4",
     "@angular/platform-browser": "~12.0.2",
     "@angular/platform-browser-dynamic": "~12.0.2",
     "@angular/router": "~12.0.2",
+    "bootstrap": "^5.0.2",
+    "chart.js": "^2.9.4",
+    "ng2-charts": "^2.4.3",
     "rxjs": "~6.6.0",
+    "sweetalert2": "^11.1.2",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"
   },
@@ -34,6 +40,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "ng2-charts-schematics": "^0.1.7",
     "typescript": "~4.2.3"
   }
 }
