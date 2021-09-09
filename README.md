@@ -91,3 +91,11 @@ docker run --net mysql_db  -p 8080:8080 adminer
 ```sql
 
 ```
+
+
+# PM2 Run
+
+```shell
+pm2 start server/src/index.js --name "backend"
+pm2 start build/index.js --name "frontend"
+```
