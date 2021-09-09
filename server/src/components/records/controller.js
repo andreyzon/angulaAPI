@@ -1,26 +1,40 @@
-const { Records } = require('../../database/models');
+const {
+  Records,
+  Nodes,
+  Electrics,
+  Temperatures,
+} = require('../../database/models');
 
-const createRecords = async (nodeId, ip, temperature) =>
-    Records.create({ nodeId: Number(nodeId), ip, temperature });
+const createRecords = async (nodeId, ip, record) => {
+  let node = await Nodes.findOne({ where: { id: nodeId } });
+  node = JSON.parse(JSON.stringify(node));
+  if (!node) return {};
+  if (node.type === 'electric') {
+    await Electrics.create({ nodeId, electric: record });
+  } else {
+    await Temperatures.create({ nodeId, temperature: record });
+  }
+  return Records.create({ nodeId, ip, record, type: node.type });
+};
 
 const getRecord = (nodeId) =>
-    Records.findAll({
-        where: { nodeId },
-        order: [['createdAt', 'DESC']],
-        limit: 20
-    });
+  Records.findAll({
+    where: { nodeId },
+    order: [['createdAt', 'DESC']],
+    limit: 20,
+  });
 
 const listRecords = () =>
-    Records.findAll({
-        where: {},
-    });
+  Records.findAll({
+    where: {},
+  });
 
-const updateRecord = (id, temperature, ip) =>
-    Records.update({ temperature, ip }, { where: { id } });
+const updateRecord = (id, record, ip) =>
+  Records.update({ record, ip }, { where: { id } });
 
 module.exports = {
-    createRecords,
-    listRecords,
-    getRecord,
-    updateRecord
+  createRecords,
+  listRecords,
+  getRecord,
+  updateRecord,
 };

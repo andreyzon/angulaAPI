@@ -422,7 +422,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"ip\": \"10.0.0.1\",\r\n    \"temperatura\": \"-2.6\",\r\n    \"Tarjeta\": \"2\"\r\n}",
+							"raw": "{\r\n    \"ip\": \"10.0.0.1\",\r\n    \"record\": \"-2.6\",\r\n    \"nodeId\": \"2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

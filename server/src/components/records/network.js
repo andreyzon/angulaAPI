@@ -18,9 +18,9 @@ const scopesValidationHandler = require('../../utils/middleware/scopesValidation
 router.post('/',
     validationHandler(createRecordSchema, 'body'),
     async (req, res) => {
-        const { Tarjeta, ip, temperatura } = req.body;
+        const { nodeId, ip, record } = req.body;
         try {
-            const records = await controller.createRecords(Tarjeta, ip, temperatura);
+            const records = await controller.createRecords(nodeId, ip, record);
             response.success(req, res, records);
         } catch (error) {
             response.error(req, res, { ...error, internalMessage: { message: 'Error create category', detail: error.parent.detail }, internalCode: 400 });

@@ -13,13 +13,13 @@ const getRecordByNodeId = {
 
 const updateRecordsSchema = {
     id: RecordIdSchema.required(),
-    temperatura: RecordNameSchema,
+    record: RecordNameSchema,
     ip: RecordIpSchema
 };
 
 const createRecordSchema = {
-    Tarjeta: NodeIdSchema.required(),
-    temperatura: RecordNameSchema.required(),
+    nodeId: NodeIdSchema.required(),
+    record: RecordNameSchema.required(),
     ip: RecordIpSchema.required(),
 };
 

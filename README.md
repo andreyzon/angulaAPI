@@ -28,10 +28,17 @@ docker volume create --name db_data
 docker network create mysql_db
 ```
 
-## Run Database docker
+
+## Run Database docker mysql
 
 ```
-docker run -d --name kiosco-db-container -e MYSQL_ROOT_PASSWORD=pass1234 -e MYSQL_DATABASE=db_kiosco -e MYSQL_USER=kiosco -e MYSQL_PASSWORD=pass1234 -v db_data:/var/lib/mysql --net mysql_db -d kiosco-db
+docker run -d --name kiosco-db-container -e MYSQL_ROOT_PASSWORD=pass1234 -e MYSQL_DATABASE=db_kiosco -e MYSQL_USER=kiosco -e MYSQL_PASSWORD=pass1234 -v db_data:/var/lib/mysql --net mysql_db -p 3306:3306 mysql
+```
+
+## Run Database docker own image
+
+```
+docker run -d --name kiosco-db-container -e MYSQL_ROOT_PASSWORD=pass1234 -e MYSQL_DATABASE=db_kiosco -e MYSQL_USER=kiosco -e MYSQL_PASSWORD=pass1234 -v db_data:/var/lib/mysql --net mysql_db kiosco-db
 ```
 
 ## Run Backend docker
@@ -78,3 +85,9 @@ docker run --net mysql_db  -p 8080:8080 adminer
  - User: root
  - Password: pass1234
  - Database: data_base_kiosco
+
+## SQL Queries
+
+```sql
+
+```

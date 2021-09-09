@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Records extends Model {
+  class Temperatures extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,21 +11,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.Records.belongsTo(models.Nodes, {
+      models.Temperatures.belongsTo(models.Nodes, {
         as: 'Nodes',
         foreignKey: 'nodeId',
         onDelete: 'CASCADE'
       });
     }
   };
-  Records.init({
+  Temperatures.init({
     nodeId: DataTypes.INTEGER,
-    record: DataTypes.STRING,
-    type: DataTypes.STRING,
-    ip: DataTypes.STRING
+    temperature: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'Records',
+    modelName: 'Temperatures',
   });
-  return Records;
+  return Temperatures;
 };

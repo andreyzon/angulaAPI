@@ -15,7 +15,7 @@ export class NodesRecordsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private nodesService: NodesService
-  ) {}
+  ) { }
   node = {
     id: 0,
     name: 'Nombre',
@@ -93,20 +93,20 @@ export class NodesRecordsComponent implements OnInit {
       this.node.id = Number(params.id);
     });
 
-    this.nodesService.getNode(this.node.id).subscribe((records) => {
+    this.nodesService.getNode(this.node.id).subscribe((records: any) => {
       this.node = records.result;
       console.log(this.node);
     });
     this.lineChartData[0].label =
       this.node.type === 'electric' ? 'Consumo en W' : 'Temperatura en C';
-    let temperatures: number[] = [];
+    let recordsAux: number[] = [];
     let dates: string[] = [];
     this.nodesService
       .listRecordsByNode(this.node.id)
       .subscribe((records: any) => {
         this.records = records.result.reverse().map((item: RecordModel) => {
-          let temperature = Number(item.temperature);
-          temperatures.push(temperature);
+          let record = Number(item.record);
+          recordsAux.push(record);
           dates.push(
             new Date(item.createdAt).toLocaleString('es-CO', {
               timeZone: 'America/Bogota',
@@ -114,10 +114,10 @@ export class NodesRecordsComponent implements OnInit {
           );
           return {
             ...item,
-            temperature,
+            record,
           };
         });
-        this.lineChartData[0].data = temperatures;
+        this.lineChartData[0].data = recordsAux;
         this.lineChartLabels = dates;
       });
   }

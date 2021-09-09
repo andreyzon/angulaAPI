@@ -5,7 +5,7 @@ Backend desarrollado en express JS con una arquitectura mvc divida en carpetas s
 ## Manage database development environment
 - Init database
 ```
-sudo service mysqlql restart
+sudo service mysql restart
 ```
 
 - Create database

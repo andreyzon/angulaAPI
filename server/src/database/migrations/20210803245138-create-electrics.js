@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Records', {
+    await queryInterface.createTable('Electrics', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -17,13 +17,7 @@ module.exports = {
         },
         onDelete: 'CASCADE'
       },
-      record: {
-        type: Sequelize.STRING
-      },
-      ip: {
-        type: Sequelize.STRING
-      },
-      type: {
+      electric: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -38,6 +32,6 @@ module.exports = {
   },
   // eslint-disable-next-line no-unused-vars
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Records');
+    await queryInterface.dropTable('Electrics');
   }
 };
