@@ -1,4 +1,4 @@
-# Titin Shop Server
+# Kiosco server
 
 Backend desarrollado en express JS con una arquitectura mvc divida en carpetas según la entidad o operacioones. 
 
