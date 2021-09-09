@@ -96,6 +96,19 @@ docker run --net mysql_db  -p 8080:8080 adminer
 # PM2 Run
 
 ```shell
-pm2 start server/src/index.js --name "backend"
-pm2 start build/index.js --name "frontend"
+pm2 start server/src/index.js --name backend
+pm2 start build/index.js --name frontend
+```
+
+## Example request
+
+```shell
+curl --location --request POST 'http://localhost:3000/' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbmlzdHJhdG9yIiwiaWF0IjoxNjMxMTYxOTUwLCJleHAiOjE2MzM3NTM5NTB9.OYf_QpmeKFN8H5FfKbMwebzA1dd1D2GODWBdliJjF-k' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "ip": "10.0.0.1",
+    "record": "-2.6",
+    "nodeId": "2"
+}'
 ```
